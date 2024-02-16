@@ -1,0 +1,30 @@
+.categories {
+  flex: 0 0 30%;
+  border-right: 2px solid #D8D8D8;
+
+  &__list {
+  }
+
+  &__item {
+    margin-bottom: 25px;
+  }
+
+  &__button {
+    letter-spacing: 0.7px;
+  }
+
+  &__button-selected {
+    font-weight: 700;
+  }
+
+  &__add-input {
+    border: 1px solid #ababab;
+    padding: 5px;
+    border-radius: 20px;
+  }
+
+  &__add-button {
+    letter-spacing: 0.7px;
+    color: #ababab;
+  }
+}

@@ -1,10 +1,13 @@
 import {Category} from "../../../App.tsx";
 import {useState} from "react";
+import './categories.scss';
 
 interface Props {
     categories: Category[]
     addCategory: (categoryName: string) => void
 }
+// todo crate selected func
+
 
 export default function Categories({categories, addCategory}: Props) {
     const [isEditing, setIsEditing] = useState(false);
@@ -15,6 +18,7 @@ export default function Categories({categories, addCategory}: Props) {
     }
 
     function handleAddBlur() {
+        // todo check for empty value
         addCategory(newCategoryName);
         setNewCategoryName('');
         setIsEditing(false);
@@ -25,7 +29,7 @@ export default function Categories({categories, addCategory}: Props) {
         <ul className="categories__list">
             {categories.map((i: Category) => <li className='categories__item' key={i.id}>
                 <button
-                    className={i.selected ? 'categories__item categories__link-selected' : 'categories__link'}>
+                    className={i.selected ? 'categories__button categories__button-selected' : 'categories__button'}>
                     {i.name}</button>
             </li>)}
         </ul>
