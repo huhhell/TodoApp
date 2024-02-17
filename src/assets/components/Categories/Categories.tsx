@@ -1,9 +1,9 @@
-import {Category} from "../../../App.tsx";
+import {ICategory} from "../../../App.tsx";
 import {useState} from "react";
 import './categories.scss';
 
 interface Props {
-    categories: Category[]
+    categories: ICategory[]
     addCategory: (categoryName: string) => void
     selectCategory: (id: number) => void
 }
@@ -25,7 +25,7 @@ export default function Categories({categories, addCategory, selectCategory}: Pr
 
     return <section className='categories'>
         <ul className="categories__list">
-            {categories.map((i: Category) => <li className='categories__item' key={i.id}>
+            {categories.map((i: ICategory) => <li className='categories__item' key={i.id}>
                 <button
                     onClick={() => selectCategory(i.id)}
                     className={i.selected ? 'categories__button categories__button-selected' : 'categories__button'}>

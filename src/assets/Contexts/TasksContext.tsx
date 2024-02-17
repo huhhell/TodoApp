@@ -1,16 +1,11 @@
-interface ITask {
-    name: string;
-    id: number;
-    category: string;
-    state: string;
-}
+import {ITask} from "../../App.tsx";
 
 interface IAction {
     type: string;
     task: ITask;
 }
 
-export default function TaskReducer(tasks: ITask[], action: IAction): ITask[] | void {
+export default function tasksReducer(tasks: ITask[], action: IAction): ITask[] {
     switch (action.type) {
         case 'add':
             return [...tasks, action.task]
@@ -27,6 +22,6 @@ export default function TaskReducer(tasks: ITask[], action: IAction): ITask[] | 
             }]
 
         default:
-            console.error('nah its unknown action' + action.type)
+            return tasks
     }
 }
