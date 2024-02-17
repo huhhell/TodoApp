@@ -23,6 +23,7 @@ function App() {
     // const [tasks, setTasks] = useState();
 
     function addCategory(categoryName: string) {
+        if (categoryName.match('^\\s*$')) return
         setCategories([...categories, {name: categoryName, id: categoryId++, selected: false}])
     }
 
