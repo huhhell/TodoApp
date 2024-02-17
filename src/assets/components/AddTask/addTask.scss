@@ -1,0 +1,27 @@
+.tasks__add {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  &-input {
+    flex: 0 0 70%;
+    padding: 10px 20px;
+    background: #E1DEDE;
+
+    &::placeholder {
+      color: #ababab;
+    }
+  }
+
+  &-select {
+    flex: 0 0 30%;
+    background: #E1DEDE url("src/assets/img/arrow.svg") no-repeat 95% 55%;
+    padding: 10px 20px;
+    color: #ababab;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  &-option {}
+}
