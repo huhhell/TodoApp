@@ -27,8 +27,18 @@ function App() {
         setCategories([...categories, {name: categoryName, id: categoryId++, selected: false}])
     }
 
+    function selectCategory(id: number) {
+        setCategories(categories.map(category => {
+            if (category.id === id) {
+                return {...category, selected: true}
+            } else {
+                return {...category, selected: false}
+            }
+        }))
+    }
+
     return <div className='_container'>
-        <Categories categories={categories} addCategory={addCategory}/>
+        <Categories categories={categories} addCategory={addCategory} selectCategory={selectCategory}/>
     </div>
 }
 
