@@ -7,8 +7,6 @@ interface Props {
     addCategory: (categoryName: string) => void
     selectCategory: (id: number) => void
 }
-// todo crate selected func
-
 
 export default function Categories({categories, addCategory, selectCategory}: Props) {
     const [isEditing, setIsEditing] = useState(false);
@@ -19,7 +17,6 @@ export default function Categories({categories, addCategory, selectCategory}: Pr
     }
 
     function handleAddBlur() {
-        // todo check for empty value
         addCategory(newCategoryName);
         setNewCategoryName('');
         setIsEditing(false);
