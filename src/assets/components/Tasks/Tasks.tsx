@@ -12,6 +12,8 @@ export default function Tasks({tasks, deleteTask, changeTask}: IProp) {
 
 
     return <ul className='tasks__list'>
-        {tasks.map(i => <Task task={i} changeTask={changeTask} deleteTask={deleteTask} key={i.id}/>)}
+        {tasks.length === 0 ?
+            <p className="tasks__list-empty">There is no tasks</p> :
+            tasks.map(i => <Task task={i} changeTask={changeTask} deleteTask={deleteTask} key={i.id}/>)}
     </ul>
 }

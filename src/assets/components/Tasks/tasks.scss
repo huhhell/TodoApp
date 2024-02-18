@@ -1,6 +1,14 @@
 .tasks {
 
-  &__list {}
+  &__list {
+
+    &-empty {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 500;
+      color: #ababab;
+    }
+  }
   &__item {
     position: relative;
     display: flex;

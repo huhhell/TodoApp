@@ -7,6 +7,8 @@ import Tasks from "./assets/components/Tasks/Tasks.tsx";
 
 let categoryId = 6;
 
+export type TaskState = 'done' | 'undone' | 'changing';
+
 export interface ICategory {
     name: string
     id: number
@@ -16,7 +18,7 @@ export interface ITask {
     name: string;
     id: number;
     category: string;
-    state: 'done' | 'undone' | 'changing';
+    state: TaskState;
 }
 
 const initialCategories: ICategory[] = [
