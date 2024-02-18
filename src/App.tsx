@@ -30,7 +30,7 @@ const initialTasks: ITask[] = [
     {name: 'cook dinner', id: 2, category: 'Home', state: 'undone'},
     {name: 'go to the gym', id: 3, category: 'Sports', state: 'undone'},
     {name: 'buy milk', id: 4, category: 'Groceries', state: 'undone'},
-]
+];
 
 function App() {
     const [categories, setCategories] = useState(initialCategories);
@@ -52,11 +52,24 @@ function App() {
         }))
     }
 
+    function handleAddTask(task: ITask) {
+        dispatch({type: 'add', task: task})
+    }
+
+    function handleDeleteTask(task: ITask) {
+        dispatch({type: 'delete', task: task})
+    }
+
+    function handleChangeTask(task: ITask) {
+        dispatch({type: 'change', task: task})
+    }
+
     return <div className='_container'>
         <Categories categories={categories} addCategory={addCategory} selectCategory={selectCategory}/>
         <section className="tasks">
             <h3 className='tasks__category'>{activeCategory}</h3>
-            <AddTask categories={categories}/>
+            <AddTask categories={categories} addTask={handleAddTask}/>
+            {/*<Tasks tasks={tasks} deleteTask={handleDeleteTask} changeTask={handleChangeTask} />*/}
         </section>
     </div>
 }
