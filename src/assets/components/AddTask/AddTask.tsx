@@ -6,13 +6,13 @@ interface IProps {
     categories: ICategory[];
     addTask: (task: ITask) => void;
 }
+
 export default function AddTask({categories, addTask}: IProps) {
     const [taskName, setTaskName] = useState('');
     const [category, setCategory] = useState('All Tasks');
 
     function handleChangeCategory(e: React.ChangeEvent<HTMLSelectElement>) {
         setCategory(e.target.value)
-        alert(category)
     }
 
     return <div className='tasks__add'>
@@ -27,5 +27,8 @@ export default function AddTask({categories, addTask}: IProps) {
                                                       key={i.id}
                                                       className='tasks__add-option'>{i.name}</option>)}
         </select>
+        <button className="tasks__add-submit">
+            <img src="src/assets/img/tick.svg" alt="tick" className="tasks__add-submit-img"/>
+        </button>
     </div>
 }
