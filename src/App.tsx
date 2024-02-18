@@ -64,6 +64,8 @@ function App() {
         dispatch({type: 'change', task: task})
     }
 
+    console.log(tasks)
+
     return <div className='_container'>
         <Categories categories={categories} addCategory={addCategory} selectCategory={selectCategory}/>
         <section className="tasks">

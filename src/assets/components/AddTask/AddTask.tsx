@@ -2,6 +2,9 @@ import {ICategory, ITask} from "../../../App.tsx";
 import './addTask.scss'
 import React, {useState} from "react";
 
+
+let nextId = 5;
+
 interface IProps {
     categories: ICategory[];
     addTask: (task: ITask) => void;
@@ -13,6 +16,15 @@ export default function AddTask({categories, addTask}: IProps) {
 
     function handleChangeCategory(e: React.ChangeEvent<HTMLSelectElement>) {
         setCategory(e.target.value)
+    }
+
+    function handleAddTask() {
+        if (taskName.match('^\\s*$')) {
+            setTaskName('')
+            return
+        }
+        addTask({name: taskName, category: category, id: nextId++, state: 'undone'})
+        setTaskName('');
     }
 
     return <div className='tasks__add'>
@@ -27,7 +39,7 @@ export default function AddTask({categories, addTask}: IProps) {
                                                       key={i.id}
                                                       className='tasks__add-option'>{i.name}</option>)}
         </select>
-        <button className="tasks__add-submit">
+        <button className="tasks__add-submit" onClick={handleAddTask}>
             <img src="src/assets/img/tick.svg" alt="tick" className="tasks__add-submit-img"/>
         </button>
     </div>
