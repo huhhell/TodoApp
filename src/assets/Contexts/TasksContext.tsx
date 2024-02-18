@@ -14,12 +14,13 @@ export default function tasksReducer(tasks: ITask[], action: IAction): ITask[] {
             return tasks.filter(i => i.id !== action.task.id)
 
         case 'change':
-            return [...tasks, {
-                name: action.task.name,
-                id: action.task.id,
-                category: action.task.category,
-                state: action.task.state
-            }]
+            return tasks.map((t) => {
+                if (t.id === action.task.id) {
+                    return action.task;
+                } else {
+                    return t;
+                }
+            });
 
         default:
             return tasks
