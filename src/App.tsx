@@ -3,6 +3,7 @@ import {useReducer, useState} from "react";
 import Categories from "./assets/components/Categories/Categories.tsx";
 import tasksReducer from "./assets/Contexts/TasksContext.tsx";
 import AddTask from "./assets/components/AddTask/AddTask.tsx";
+import Tasks from "./assets/components/Tasks/Tasks.tsx";
 
 let categoryId = 6;
 
@@ -26,9 +27,9 @@ const initialCategories: ICategory[] = [
     {name: 'Sports', id: 4, selected: false},
     {name: 'Groceries', id: 5, selected: false}];
 const initialTasks: ITask[] = [
-    {name: 'wash the plate', id: 1, category: 'Home', state: 'undone'},
+    {name: 'wash the plate', id: 1, category: 'Home', state: 'done'},
     {name: 'cook dinner', id: 2, category: 'Home', state: 'undone'},
-    {name: 'go to the gym', id: 3, category: 'Sports', state: 'undone'},
+    {name: 'go to the gym', id: 3, category: 'Sports', state: 'changing'},
     {name: 'buy milk', id: 4, category: 'Groceries', state: 'undone'},
 ];
 
@@ -71,7 +72,7 @@ function App() {
         <section className="tasks">
             <h3 className='tasks__category'>{activeCategory}</h3>
             <AddTask categories={categories} addTask={handleAddTask}/>
-            {/*<Tasks tasks={tasks} deleteTask={handleDeleteTask} changeTask={handleChangeTask} />*/}
+            <Tasks tasks={tasks} deleteTask={handleDeleteTask} changeTask={handleChangeTask} />
         </section>
     </div>
 }
