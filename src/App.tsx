@@ -13,26 +13,29 @@ export interface ICategory {
     name: string
     id: number
     selected: boolean
+    color: string;
 }
+
 export interface ITask {
     name: string;
     id: number;
-    category: string;
+    category: { name: string, color: string }
     state: TaskState;
 }
 
 const initialCategories: ICategory[] = [
-    {name: 'All Tasks', id: 0, selected: true},
-    {name: 'Favorites', id: 1, selected: false},
-    {name: 'Work', id: 2, selected: false},
-    {name: 'Home', id: 3, selected: false},
-    {name: 'Sports', id: 4, selected: false},
-    {name: 'Groceries', id: 5, selected: false}];
+    {name: 'All Tasks', id: 0, selected: true, color: '#ababab'},
+    {name: 'Favorites', id: 1, selected: false, color: '#FF92E7'},
+    {name: 'Work', id: 2, selected: false, color: '#2F80ED'},
+    {name: 'Home', id: 3, selected: false, color: '#EB5757'},
+    {name: 'Sports', id: 4, selected: false, color: '#9B51E1'},
+    {name: 'Groceries', id: 5, selected: false, color: '#26AD60'}];
+
 const initialTasks: ITask[] = [
-    {name: 'wash the plate', id: 1, category: 'Home', state: 'done'},
-    {name: 'cook dinner', id: 2, category: 'Home', state: 'undone'},
-    {name: 'go to the gym', id: 3, category: 'Sports', state: 'changing'},
-    {name: 'buy milk', id: 4, category: 'Groceries', state: 'undone'},
+    {name: 'wash the plate', id: 1, category: {name: 'Home', color: '#EB5757'}, state: 'done'},
+    {name: 'cook dinner', id: 2, category: {name: 'Home', color: '#EB5757'}, state: 'undone'},
+    {name: 'go to the gym', id: 3, category: {name: 'Sports', color: '#9B51E1'}, state: 'changing'},
+    {name: 'buy milk', id: 4, category: {name: 'Groceries', color: '#26AD60'}, state: 'undone'},
 ];
 
 function App() {
@@ -40,9 +43,9 @@ function App() {
     const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
     const activeCategory = categories.filter(i => i.selected)[0].name
 
-    function addCategory(categoryName: string) {
+    function addCategory(categoryName: string, color: string) {
         if (categoryName.match('^\\s*$')) return
-        setCategories([...categories, {name: categoryName, id: categoryId++, selected: false}])
+        setCategories([...categories, {name: categoryName, id: categoryId++, selected: false, color: color}])
     }
 
     function selectCategory(id: number) {
@@ -67,14 +70,12 @@ function App() {
         dispatch({type: 'change', task: task})
     }
 
-    console.log(tasks)
-
     return <div className='_container'>
         <Categories categories={categories} addCategory={addCategory} selectCategory={selectCategory}/>
         <section className="tasks">
             <h3 className='tasks__category'>{activeCategory}</h3>
             <AddTask categories={categories} addTask={handleAddTask}/>
-            <Tasks tasks={tasks} deleteTask={handleDeleteTask} changeTask={handleChangeTask} />
+            <Tasks tasks={tasks} deleteTask={handleDeleteTask} changeTask={handleChangeTask}/>
         </section>
     </div>
 }

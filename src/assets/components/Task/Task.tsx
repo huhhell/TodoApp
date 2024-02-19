@@ -33,7 +33,7 @@ export default function Task({task, changeTask, deleteTask}: IProps) {
             return <li className='tasks__item'>
                 <input type="checkbox" className='tasks__item-check' checked={true} onChange={onChangeCheckbox}/>
                 <p className="tasks__item-name tasks__item-name-done">{task.name}</p>
-                <p className="tasks__item-category">{task.category}</p>
+                <p className="tasks__item-category" style={{background: task.category.color}}>{task.category.name}</p>
                 <button className="tasks__item-delete" onClick={handleDeleteTask}>
                     <img src="/src/assets/img/delete.svg" alt="delete" className="tasks__item-delete-img"/>
                 </button>
@@ -45,7 +45,7 @@ export default function Task({task, changeTask, deleteTask}: IProps) {
             return <li className='tasks__item'>
                 <input type="checkbox" className='tasks__item-check' checked={false} onChange={onChangeCheckbox}/>
                 <p className="tasks__item-name">{task.name}</p>
-                <p className="tasks__item-category">{task.category}</p>
+                <p className="tasks__item-category" style={{background: task.category.color}}>{task.category.name}</p>
                 <button className="tasks__item-delete" onClick={handleDeleteTask}>
                     <img src="/src/assets/img/delete.svg" alt="" className="tasks__item-delete-img"/>
                 </button>
@@ -56,7 +56,7 @@ export default function Task({task, changeTask, deleteTask}: IProps) {
         case 'changing':
             return <li className='tasks__item'>
                 <input type="text" className='tasks__item-changing' value={task.name} onChange={handleChangeInput}/>
-                <p className="tasks__item-category">{task.category}</p>
+                <p className="tasks__item-category" style={{background: task.category.color}}>{task.category.name}</p>
                 <button className="tasks__item-delete" onClick={handleDeleteTask}>
                     <img src="/src/assets/img/delete.svg" alt="" className="tasks__item-delete-img"/>
                 </button>

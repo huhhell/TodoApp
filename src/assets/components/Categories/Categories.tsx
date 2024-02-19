@@ -4,21 +4,23 @@ import './categories.scss';
 
 interface Props {
     categories: ICategory[]
-    addCategory: (categoryName: string) => void
+    addCategory: (categoryName: string, color: string) => void
     selectCategory: (id: number) => void
 }
 
 export default function Categories({categories, addCategory, selectCategory}: Props) {
     const [isEditing, setIsEditing] = useState(false);
     const [newCategoryName, setNewCategoryName] = useState('');
+    const [newCategoryColor, setNewCategoryColor] = useState('#9a9a9a')
 
     function handleAddClick() {
         setIsEditing(true);
     }
 
     function handleAddBlur() {
-        addCategory(newCategoryName);
+        addCategory(newCategoryName, newCategoryColor);
         setNewCategoryName('');
+        setNewCategoryColor('#9a9a9a')
         setIsEditing(false);
     }
 
@@ -29,16 +31,26 @@ export default function Categories({categories, addCategory, selectCategory}: Pr
                 <button
                     onClick={() => selectCategory(i.id)}
                     className={i.selected ? 'categories__button categories__button-selected' : 'categories__button'}>
-                    {i.name}</button>
+                    <div className="categories__button-color" style={{background: i.color}}></div>
+                    <p className="categories__button-text">{i.name}</p>
+                </button>
             </li>)}
         </ul>
         {isEditing ?
-            <input
-                type="text"
-                className="categories__add-input"
-                onChange={(e) => setNewCategoryName(e.target.value)}
-                onBlur={handleAddBlur}
-            /> :
+            <div className='categories__add'>
+                <input
+                    type="color"
+                    className="categories__add-color"
+                    value={newCategoryColor}
+                    onChange={(e) => setNewCategoryColor(e.target.value)}/>
+                <input
+                    type="text"
+                    className="categories__add-input"
+                    onChange={(e) => setNewCategoryName(e.target.value)}
+                    onBlur={handleAddBlur}
+                />
+            </div>
+             :
             <button className="categories__add-button" onClick={handleAddClick}>+ New category</button>
         }
     </section>

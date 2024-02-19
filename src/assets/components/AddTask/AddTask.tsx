@@ -14,6 +14,10 @@ export default function AddTask({categories, addTask}: IProps) {
     const [taskName, setTaskName] = useState('');
     const [category, setCategory] = useState('All Tasks');
 
+    function findCategory(categoryName: string) {
+        return categories.find((i: ICategory) => i.name === categoryName) || {name: 'All Tasks', color: '#ababab'}
+    }
+
     function handleChangeCategory(e: React.ChangeEvent<HTMLSelectElement>) {
         setCategory(e.target.value)
     }
@@ -23,7 +27,7 @@ export default function AddTask({categories, addTask}: IProps) {
             setTaskName('')
             return
         }
-        addTask({name: taskName, category: category, id: nextId++, state: 'undone'})
+        addTask({name: taskName, category: {name: category, color: findCategory(category).color}, id: nextId++, state: 'undone'})
         setTaskName('');
     }
 

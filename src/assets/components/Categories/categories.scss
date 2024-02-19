@@ -12,20 +12,50 @@
 
   &__button {
     letter-spacing: 0.7px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &-text {
+      font-weight: inherit;
+    }
+
+    &-color {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
   }
 
   &__button-selected {
     font-weight: 700;
   }
 
+  &__add {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &-color {
+      width: 30px;
+      height: 30px;
+    }
+
+    &-input {
+      border: 1px solid #ababab;
+      padding: 5px;
+      border-radius: 20px;
+    }
+
+    &-button {
+      letter-spacing: 0.7px;
+      color: #ababab;
+    }
+  }
+
   &__add-input {
-    border: 1px solid #ababab;
-    padding: 5px;
-    border-radius: 20px;
   }
 
   &__add-button {
-    letter-spacing: 0.7px;
-    color: #ababab;
   }
 }
