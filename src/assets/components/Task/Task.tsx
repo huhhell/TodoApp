@@ -10,7 +10,7 @@ interface IProps {
 
 export default function Task({task, changeTask, deleteTask}: IProps) {
 
-    function onChangeCheckbox(e: React.ChangeEvent<HTMLInputElement>) {
+    function handleChangeCheckbox(e: React.ChangeEvent<HTMLInputElement>) {
         let newState: TaskState = e.target.checked ? 'done' : 'undone';
         changeTask({...task, state: newState})
     }
@@ -31,7 +31,7 @@ export default function Task({task, changeTask, deleteTask}: IProps) {
     switch (task.state) {
         case 'done':
             return <li className='tasks__item'>
-                <input type="checkbox" className='tasks__item-check' checked={true} onChange={onChangeCheckbox}/>
+                <input type="checkbox" className='tasks__item-check' checked={true} onChange={handleChangeCheckbox}/>
                 <p className="tasks__item-name tasks__item-name-done">{task.name}</p>
                 <p className="tasks__item-category" style={{background: task.category.color}}>{task.category.name}</p>
                 <button className="tasks__item-delete" onClick={handleDeleteTask}>
@@ -43,7 +43,7 @@ export default function Task({task, changeTask, deleteTask}: IProps) {
             </li>
         case 'undone':
             return <li className='tasks__item'>
-                <input type="checkbox" className='tasks__item-check' checked={false} onChange={onChangeCheckbox}/>
+                <input type="checkbox" className='tasks__item-check' checked={false} onChange={handleChangeCheckbox}/>
                 <p className="tasks__item-name">{task.name}</p>
                 <p className="tasks__item-category" style={{background: task.category.color}}>{task.category.name}</p>
                 <button className="tasks__item-delete" onClick={handleDeleteTask}>

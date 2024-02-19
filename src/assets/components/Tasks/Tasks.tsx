@@ -12,7 +12,6 @@ interface IProp {
 export default function Tasks({tasks, deleteTask, changeTask, activeCategory}: IProp) {
     const visibleTasks = activeCategory.name === 'All Tasks' ? [...tasks] : tasks.filter(i => i.category.name === activeCategory.name);
 
-
     return <ul className='tasks__list'>
         {visibleTasks.length === 0 ?
             <p className="tasks__list-empty">There is no tasks</p> :
