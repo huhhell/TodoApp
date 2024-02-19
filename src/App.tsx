@@ -32,16 +32,16 @@ const initialCategories: ICategory[] = [
     {name: 'Groceries', id: 5, selected: false, color: '#26AD60'}];
 
 const initialTasks: ITask[] = [
-    {name: 'wash the plate', id: 1, category: {name: 'Home', color: '#EB5757'}, state: 'done'},
+    {name: 'wash the plate', id: 1, category: {name: 'Home', color: '#EB5757'}, state: 'undone'},
     {name: 'cook dinner', id: 2, category: {name: 'Home', color: '#EB5757'}, state: 'undone'},
-    {name: 'go to the gym', id: 3, category: {name: 'Sports', color: '#9B51E1'}, state: 'changing'},
+    {name: 'go to the gym', id: 3, category: {name: 'Sports', color: '#9B51E1'}, state: 'undone'},
     {name: 'buy milk', id: 4, category: {name: 'Groceries', color: '#26AD60'}, state: 'undone'},
 ];
 
 function App() {
     const [categories, setCategories] = useState(initialCategories);
     const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
-    const activeCategory = categories.filter(i => i.selected)[0].name
+    const activeCategory = categories.find(i => i.selected) || {name: 'All Tasks', id: 0, selected: true, color: '#ababab'}
 
     function addCategory(categoryName: string, color: string) {
         if (categoryName.match('^\\s*$')) return
@@ -73,9 +73,9 @@ function App() {
     return <div className='_container'>
         <Categories categories={categories} addCategory={addCategory} selectCategory={selectCategory}/>
         <section className="tasks">
-            <h3 className='tasks__category'>{activeCategory}</h3>
+            <h3 className='tasks__category'>{activeCategory.name}</h3>
             <AddTask categories={categories} addTask={handleAddTask}/>
-            <Tasks tasks={tasks} deleteTask={handleDeleteTask} changeTask={handleChangeTask}/>
+            <Tasks tasks={tasks} deleteTask={handleDeleteTask} changeTask={handleChangeTask} activeCategory={activeCategory}/>
         </section>
     </div>
 }
