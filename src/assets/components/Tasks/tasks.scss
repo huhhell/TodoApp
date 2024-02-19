@@ -15,9 +15,14 @@
     align-items: center;
     gap: 15px;
     width: 100%;
+    height: 35px;
 
     &:not(:last-child) {
       margin-bottom: 15px;
+
+      @media (max-width: 700px) {
+        margin-bottom: 5px;
+      }
     }
 
     &-check {
@@ -34,6 +39,11 @@
       transform: translateY(-0.075em);
       display: grid;
       place-content: center;
+
+      @media (max-width: 700px) {
+        width: 25px;
+        height: 25px;
+      }
 
       &::before {
         content: "";
@@ -54,12 +64,17 @@
     &-name {
       font-size: 20px;
       font-weight: 500;
+
+      @media (max-width: 700px) {
+        font-size: 16px;
+      }
     }
     
     &-name-done {
       text-decoration: line-through #ababab;
       color: #7e7e7e;
     }
+
     &-changing {
       background-color: #E1DEDE;
       padding: 7px 10px;
@@ -72,6 +87,11 @@
       -webkit-border-radius: 20px;
       -moz-border-radius: 20px;
       border-radius: 20px;
+
+      @media (max-width: 700px) {
+        padding: 5px 10px;
+        font-size: 14px;
+      }
     }
     &-delete {
       position: absolute;
@@ -83,6 +103,10 @@
     &-delete-img {
       height: 25px;
       width: auto;
+
+      @media (max-width: 700px) {
+        height: 20px;
+      }
     }
 
     &-edit {
@@ -94,6 +118,10 @@
     &-edit-img {
       height: 25px;
       width: auto;
+
+      @media (max-width: 700px) {
+        height: 20px;
+      }
     }
 
     &-submit {
@@ -105,6 +133,10 @@
     &-submit-img {
       height: 35px;
       width: auto;
+
+      @media (max-width: 700px) {
+        height: 30px;
+      }
     }
   }
 }
