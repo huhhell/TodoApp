@@ -74,7 +74,7 @@ function App() {
         <Categories categories={categories} addCategory={addCategory} selectCategory={selectCategory}/>
         <section className="tasks">
             <h3 className='tasks__category'>{activeCategory.name}</h3>
-            <AddTask categories={categories} addTask={handleAddTask}/>
+            <AddTask category={activeCategory} addTask={handleAddTask}/>
             <Tasks tasks={tasks} deleteTask={handleDeleteTask} changeTask={handleChangeTask} activeCategory={activeCategory}/>
         </section>
     </div>
