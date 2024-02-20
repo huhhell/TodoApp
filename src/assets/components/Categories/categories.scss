@@ -15,7 +15,7 @@
     padding: 20px;
     z-index: 3;
     display: block;
-    width: 50%;
+    width: 100%;
     background: #ffffff;
     border: 2px solid #D8D8D8;
     transition: 0.3s ease-out;
@@ -31,9 +31,14 @@
   }
 
   &__close {
-    position: absolute;
-    top: 0;
-    right: 0;
+    display: none;
+
+    @media (max-width:550px) {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
 
     &-img {
       width: 25px;

@@ -42,7 +42,12 @@ function App() {
     const [categories, setCategories] = useState(initialCategories);
     const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
     const [isShowCategories, setIsShowCategories] = useState(false);
-    const activeCategory = categories.find(i => i.selected) || {name: 'All Tasks', id: 0, selected: true, color: '#ababab'};
+    const activeCategory = categories.find(i => i.selected) || {
+        name: 'All Tasks',
+        id: 0,
+        selected: true,
+        color: '#ababab'
+    };
 
     function addCategory(categoryName: string, color: string) {
         if (categoryName.match('^\\s*$')) return
@@ -76,14 +81,20 @@ function App() {
     }
 
     return <div className='_container'>
-        <Categories categories={categories} addCategory={addCategory} selectCategory={selectCategory} shown={isShowCategories} handleShown={handleShownCategory}/>
+        <Categories categories={categories}
+                    addCategory={addCategory}
+                    selectCategory={selectCategory}
+                    shown={isShowCategories}
+                    handleShown={handleShownCategory}/>
         <section className="tasks">
             <div className="tasks__category">
                 <button className="tasks__category-show" onClick={handleShownCategory}>Categories</button>
                 <h3 className='tasks__category-name'>{activeCategory.name}</h3>
             </div>
             <AddTask category={activeCategory} addTask={handleAddTask}/>
-            <Tasks tasks={tasks} deleteTask={handleDeleteTask} changeTask={handleChangeTask}
+            <Tasks tasks={tasks}
+                   deleteTask={handleDeleteTask}
+                   changeTask={handleChangeTask}
                    activeCategory={activeCategory}/>
         </section>
     </div>

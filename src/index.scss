@@ -29,6 +29,10 @@
   padding: 20px;
   width: 100%;
 
+  @media (max-width: 550px) {
+    padding: 0;
+  }
+
   &__category {
     display: flex;
     align-items: center;
@@ -49,11 +53,16 @@
     }
 
     &-show {
+      display: none;
       font-size: 20px;
       padding: 5px 10px;
       border-radius: 20px;
       border: 1px solid #000;
       color: #000000;
+
+      @media (max-width:550px) {
+        display: block;
+      }
     }
   }
 }

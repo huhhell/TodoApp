@@ -82,7 +82,8 @@
 
     &-category {
       display: block;
-      padding: 10px 20px;
+      padding: 5px 10px;
+      font-size: 18px;
       color: #ffffff;
       -webkit-border-radius: 20px;
       -moz-border-radius: 20px;
@@ -98,6 +99,10 @@
       right: 20px;
       top: 50%;
       transform: translateY(-50%);
+
+      @media (max-width: 550px) {
+        right: 0;
+      }
     }
 
     &-delete-img {
@@ -114,6 +119,10 @@
       right: 60px;
       top: 50%;
       transform: translateY(-50%);
+
+      @media (max-width: 550px) {
+        right: 30px;
+      }
     }
     &-edit-img {
       height: 25px;
@@ -129,6 +138,10 @@
       right: 55px;
       top: 50%;
       transform: translateY(-50%);
+
+      @media (max-width: 550px) {
+        right: 25px;
+      }
     }
     &-submit-img {
       height: 35px;
