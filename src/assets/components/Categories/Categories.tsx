@@ -1,6 +1,7 @@
 import {ICategory} from "../../../App.tsx";
 import {useState} from "react";
 import './categories.scss';
+import closeImg from '../../img/close.svg';
 
 interface Props {
     categories: ICategory[]
@@ -30,7 +31,7 @@ export default function Categories({categories, addCategory, selectCategory, sho
     return <section className={shown ? 'categories categories-shown' : 'categories'}>
         <div className="categories-cnt">
             <button className="categories__close" onClick={handleShown}>
-                <img src="/src/assets/img/close.svg" alt="close categories" className="categories__close-img"/>
+                <img src={closeImg} alt="close categories" className="categories__close-img"/>
             </button>
             <ul className="categories__list">
                 {categories.map((i: ICategory) => <li className='categories__item' key={i.id}>
