@@ -1,6 +1,7 @@
 import {ICategory, ITask} from "../../../App.tsx";
 import './addTask.scss'
 import {useState} from "react";
+import tickImg from '../../img/tick.svg';
 
 
 let nextId = 5;
@@ -30,7 +31,7 @@ export default function AddTask({category, addTask}: IProps) {
             placeholder='Add a new task'
             onChange={(e) => setTaskName(e.target.value)}/>
         <button className="tasks__add-submit" onClick={handleAddTask}>
-            <img src="src/assets/img/tick.svg" alt="tick" className="tasks__add-submit-img"/>
+            <img src={tickImg} alt="tick" className="tasks__add-submit-img"/>
         </button>
     </div>
 }

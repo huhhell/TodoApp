@@ -1,5 +1,8 @@
 import {ITask, TaskState} from "../../../App.tsx";
 import React from "react";
+import deleteImg from '../../img/delete.svg';
+import editImg from '../../img/edit.svg';
+import tickImg from '../../img/tick-black.svg';
 
 
 interface IProps {
@@ -35,10 +38,10 @@ export default function Task({task, changeTask, deleteTask}: IProps) {
                 <p className="tasks__item-name tasks__item-name-done">{task.name}</p>
                 <p className="tasks__item-category" style={{background: task.category.color}}>{task.category.name}</p>
                 <button className="tasks__item-delete" onClick={handleDeleteTask}>
-                    <img src="/src/assets/img/delete.svg" alt="delete" className="tasks__item-delete-img"/>
+                    <img src={deleteImg} alt="delete" className="tasks__item-delete-img"/>
                 </button>
                 <button className="tasks__item-edit" onClick={handleEditingTask}>
-                    <img src="/src/assets/img/edit.svg" alt="edit" className="tasks__item-edit-img"/>
+                    <img src={editImg} alt="edit" className="tasks__item-edit-img"/>
                 </button>
             </li>
         case 'undone':
@@ -47,10 +50,10 @@ export default function Task({task, changeTask, deleteTask}: IProps) {
                 <p className="tasks__item-name">{task.name}</p>
                 <p className="tasks__item-category" style={{background: task.category.color}}>{task.category.name}</p>
                 <button className="tasks__item-delete" onClick={handleDeleteTask}>
-                    <img src="/src/assets/img/delete.svg" alt="" className="tasks__item-delete-img"/>
+                    <img src={deleteImg} alt="" className="tasks__item-delete-img"/>
                 </button>
                 <button className="tasks__item-edit" onClick={handleEditingTask}>
-                    <img src="/src/assets/img/edit.svg" alt="edit" className="tasks__item-edit-img"/>
+                    <img src={editImg} alt="edit" className="tasks__item-edit-img"/>
                 </button>
             </li>
         case 'changing':
@@ -58,10 +61,10 @@ export default function Task({task, changeTask, deleteTask}: IProps) {
                 <input type="text" className='tasks__item-changing' value={task.name} onChange={handleChangeInput}/>
                 <p className="tasks__item-category" style={{background: task.category.color}}>{task.category.name}</p>
                 <button className="tasks__item-delete" onClick={handleDeleteTask}>
-                    <img src="/src/assets/img/delete.svg" alt="" className="tasks__item-delete-img"/>
+                    <img src={deleteImg} alt="" className="tasks__item-delete-img"/>
                 </button>
                 <button className="tasks__item-submit" onClick={handleEditingTask}>
-                    <img src="/src/assets/img/tick-black.svg" alt="submit" className="tasks__item-submit-img"/>
+                    <img src={tickImg} alt="submit" className="tasks__item-submit-img"/>
                 </button>
             </li>
     }
